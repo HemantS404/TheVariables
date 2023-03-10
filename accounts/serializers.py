@@ -21,6 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
         return data
     def create(self, validated_data):
         user = User.objects.create( 
+            username = validated_data.get('username'),
             First_name = validated_data.get('First_name'), 
             Last_name = validated_data.get('Last_name'), 
             date_of_birth = validated_data.get('date_of_birth'),
