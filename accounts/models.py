@@ -5,6 +5,7 @@ from .managers import UserManager
 
 # Create your models here.
 class User(AbstractBaseUser):
+    username = models.CharField(max_length=20, unique=True, help_text='Enter your Username')
     First_name = models.CharField(max_length=20, help_text='Enter your First name')
     Last_name = models.CharField(max_length=20, help_text='Enter your Last name')
     date_of_birth = models.DateField(null=True, blank=True, help_text='Enter your Date of Birth')
@@ -24,11 +25,11 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['First_name','Last_name']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email','First_name','Last_name']
 
     def __str__(self):
-        return self.First_name+' '+self.Last_name+', '+self.email
+        return self.username
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
