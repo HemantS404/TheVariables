@@ -21,6 +21,9 @@ urlpatterns = [
     path('',schema_view.with_ui(cache_timeout=0), name='schema-json'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('company_handle/', include('compony_handle.urls')),
+    path('job_handle/', include('job_handle.urls')),
+    path('model/', include('deploy_model.urls')),
 ]
 
 if settings.DEBUG:
